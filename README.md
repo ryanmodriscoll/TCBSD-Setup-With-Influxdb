@@ -4,13 +4,13 @@ This repo documents the exact commands I use to:
 1) Install and start **InfluxDB (influxd)** on FreeBSD / TwinCAT/BSD  
 2) Enable it at boot  
 3) Create a database from the Influx shell  
-4) (Optional) Install **Beckhoff TF6420 Database Server** (TwinCAT function)
+4) Install **Beckhoff TF6420 Database Server** (TwinCAT function)
 
 ---
 
-## 1) Install InfluxDB
+All of these packages installed require internet access.  The easiest way to do this is to connect an ethernet cable that has access to a network on the X001 slot.  You can check the internet connection by doing a "ping -c 4 google.com"
 
-### Install package
+### Install influxdb package
 ```sh
 doas pkg install influxdb
 ```
@@ -70,6 +70,27 @@ Shutdown -r now
 ### Now inside TwinCAT we need to make sure the influx db settings are what we setup on the CX5140 and Activate the Configuration to the Server
 <img width="1531" height="517" alt="image" src="https://github.com/user-attachments/assets/5552de26-9827-4903-b05f-6c3989c078b3" />
 <img width="452" height="151" alt="image" src="https://github.com/user-attachments/assets/fc7cf3e2-2b13-4248-b46d-2d25ce42413d" />
+
+
+You can now activate configuration and follow the recorded video from the last time we met and I showed this program
+
+Here are some extra commands I showed in the video:
+
+### Convert the Database measurement to an exportable CSV file:
+```sh
+influx -database mydata \
+  -precision rfc3339 \
+  -format csv \
+  -execute 'SELECT * FROM "Axis1"' \
+  > /var/tmp/Axis1.csv
+```
+
+### Transfer this CSV file to your laptop.  This command is run on your windows laptop and the IP address is the IP address of the CX5140
+```sh
+scp Administrator@192.168.1.44:/var/tmp/Axis1.csv C:\temp\
+```
+
+
 
 
 
