@@ -34,8 +34,51 @@ doas ee /etc/rc.conf
 
 ### Add this line at the bottom of the file
 ```sh
-influxd_enable="YES"<img width="238" height="23" alt="image" src="https://github.com/user-attachments/assets/c21f1d40-1042-4bc2-a97c-dc2cdd28a31f" />
+influxd_enable="YES"
 ```
+
+### Start Service
+```sh
+doas service influxd start
+```
+
+### Create a username and password for the influx shell.  This will be the username and password of the database you use inside TwinCAT
+```sh
+influx -username admin -password 123
+```
+
+### Create a database.  This must match the name of the Database in the Database project setup in TwinCAT
+```sh
+CREATE DATABASE mydb
+```
+
+### The measurements will go inside this Database.  For example Axis1 Axis2 Axis3 etc will all be a separate measurement with its own variable data.  For now exit
+```sh
+exit
+```
+
+### Install the TwinCAT Function Database server
+```sh
+Doas pkg install TF6420-Database-Server
+```
+
+### After install completes restart
+```sh
+Shutdown -r now
+```
+
+### Now inside TwinCAT we need to make sure the influx db settings are what we setup on the CX5140 and Activate the Configuration to the Server
+<img width="1531" height="517" alt="image" src="https://github.com/user-attachments/assets/5552de26-9827-4903-b05f-6c3989c078b3" />
+<img width="452" height="151" alt="image" src="https://github.com/user-attachments/assets/fc7cf3e2-2b13-4248-b46d-2d25ce42413d" />
+
+
+
+
+
+
+
+
+
 
 
 
