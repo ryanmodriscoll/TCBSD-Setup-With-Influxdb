@@ -57,6 +57,13 @@ CREATE DATABASE mydb
 exit
 ```
 
+### Influx uses the port 8086 to facilitate data exchange.  If firewall is going to be enabled we need to allow traffic through port 8086
+```sh
+doas ee /etc/pf.conf
+```
+<img width="617" height="782" alt="image" src="https://github.com/user-attachments/assets/48ee499e-3b09-4230-b223-44d11568d7e8" />
+
+
 ### Install the TwinCAT Function Database server
 ```sh
 Doas pkg install TF6420-Database-Server
