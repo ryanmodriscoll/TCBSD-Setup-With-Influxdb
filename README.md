@@ -67,14 +67,16 @@ Doas pkg install TF6420-Database-Server
 Shutdown -r now
 ```
 
-### Now inside TwinCAT we need to make sure the influx db settings are what we setup on the CX5140 and Activate the Configuration to the Server
-<img width="1531" height="517" alt="image" src="https://github.com/user-attachments/assets/5552de26-9827-4903-b05f-6c3989c078b3" />
-<img width="452" height="151" alt="image" src="https://github.com/user-attachments/assets/fc7cf3e2-2b13-4248-b46d-2d25ce42413d" />
+### Now inside TwinCAT we need to make sure the influx db settings are what we setup on the BSD PC and Activate the Configuration to the Server
+<img width="1116" height="385" alt="image" src="https://github.com/user-attachments/assets/082e20db-6120-4385-ab66-8c156037342e" />
+
+<img width="452" height="156" alt="image" src="https://github.com/user-attachments/assets/2aef2848-046c-4a19-b15a-b23228b279ab" />
 
 
-You can now activate configuration and follow the recorded video from the last time we met and I showed this program
 
-Here are some extra commands I showed in the video:
+You can now activate configuration and execute the TwinCAT program
+
+Here are some extra commands:
 
 ### Convert the Database measurement to an exportable CSV file:
 ```sh
@@ -85,7 +87,7 @@ influx -database mydata \
   > /var/tmp/Axis1.csv
 ```
 
-### Transfer this CSV file to your laptop.  This command is run on your windows laptop and the IP address is the IP address of the CX5140
+### Transfer this CSV file to your laptop.  This command is run on your windows laptop and the IP address is the IP address of the Beckhoff PC
 ```sh
 scp Administrator@192.168.1.44:/var/tmp/Axis1.csv C:\temp\
 ```
