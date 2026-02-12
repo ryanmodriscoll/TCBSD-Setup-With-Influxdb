@@ -1,0 +1,15 @@
+# InfluxDB + (Optional) TF6420 Setup on TwinCAT/BSD / FreeBSD
+
+This repo documents the exact commands I use to:
+1) Install and start **InfluxDB (influxd)** on FreeBSD / TwinCAT/BSD  
+2) Enable it at boot  
+3) Create a database from the Influx shell  
+4) (Optional) Install **Beckhoff TF6420 Database Server** (TwinCAT function)
+
+---
+
+## 1) Install InfluxDB
+
+### Install package
+```sh
+doas pkg install influxdb
